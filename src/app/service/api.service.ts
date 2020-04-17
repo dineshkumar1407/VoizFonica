@@ -23,6 +23,9 @@ export class ApiService {
     return this.http.post<User>(this.userUrl1, user);
   }
 
+  // public login(loginPayload) {
+  //   return this.http.post<User>('http://localhost:8080/'+ 'token/generate-token', loginPayload);
+  // }
   public getUsers() {
     return this.http.get<User[]>(this.userUrl1);
     }

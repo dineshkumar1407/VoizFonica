@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
     
   }
    
-
-
   login():void{
     
     if(this.auth.authenticate(this.username,this.password))

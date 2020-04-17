@@ -1,3 +1,6 @@
+
+<br><br>
+<!--showing the login page to the customer-->
 <div class="container">
     <div class="row">
         <div class="col-lg-7" style="float: left;">
@@ -32,55 +35,82 @@
             </div>
         </div>
         <div class="col-lg-5" style="float: right;">
-        
-        <div class="card">
-            <div class="card-body">
-                <form #loginForm="ngForm">
-                    <div class ="row ">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <div class="card">
+
+                <div class="card-body">
+                    <form #loginForm="ngForm">
+                        <small *ngIf='invalidLoginFlag'
+                            style="color: #E98074;text-align: center;">{{ invalidMsg }}</small><br><br>
+                        <div class="input-group form-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <!-- <input type="text" class="form-control" placeholder="username" required ngModel [(ngModel)]="username" > -->
+                            <input type="text" name="username" [(ngModel)]="username" required ngModel #name="ngModel"
+                                [class.is-invalid]="name.invalid && name.touched" class="form-control p-4"
+                                placeholder="Username" /><br><br>
+                            <br>
+                            <div>
+                                <small class="text-danger" [class.d-none]="name.valid || name.untouched"> Name is
+                                    required !</small>
+                            </div>
                         </div>
-                        <!-- <input type="text" name="username" class="form-control p-4" id="uname" [(ngModel)]="username" required
-                            ngModel #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
-                            placeholder="Username" /><br><br> -->
-                    <input type="text" class="form-control p-4" [(ngModel)]="auth.username" placeholder="username" required> 
-                        <br>
-                        
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+
+
+
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <!-- <input type="password" class="form-control" placeholder="password" required ngModel [(ngModel)]="password"> -->
+                            <input type="password" name="password" [(ngModel)]="password" required ngModel
+                                class="form-control p-4" placeholder="Password" #pass="ngModel" /><br><br>
+                            <small class="text-danger" [class.d-none]="pass.valid || pass.untouched"> Password is
+                                required !</small>
                         </div>
-                        <input type="password" class="form-control p-4" [(ngModel)]="auth.password" placeholder="password" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" ngModel class="btn btn" (click)='login()'
-                            style="float:right; background-color:red; color: white;">Login</button>
-                    </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Don't have an account?<a routerLink="/register">Sign Up</a>
+
+                        <div class="form-group">
+                            <!-- <input type="submit" value="Login" class="btn float-right login_btn"  ngModel> -->
+                            <button type="submit" ngModel class="btn " (click)='login()'
+                                style="float:right; background-color:red; color: white;">Login</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <a routerLink="/forgotpass">Forgot your password?</a>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a routerLink="/register">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="/forgotpass">Forgot your password?</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        </div>
-        </div>
+    </div>
 </div>
 
 
 
 
-
-
-
-
-
-
+<!-- <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+            
+                    <form #loginForm="ngForm" >
+                        {{loginForm.value|json}}  
+                        <h1 style="text-align: center;">Login</h1>
+                        <small *ngIf='invalidLoginFlag'>{{ invalidMsg }}</small><br><br>
+                        <input type="text" name="username" [(ngModel)]="username"  required ngModel #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" class="form-control p-4" placeholder="Username" /><br><br>
+                        <input type="password"  name="password" [(ngModel)]="password" required  ngModel  class="form-control p-4" placeholder="Password"/><br><br>
+                           
+                        <button type="submit" ngModel class="btn btn-primary" (click)='login()'>Login</button>
+                    </form>
+            
+                </div>
+            
+                <div class="col-lg-4" ></div>
+            </div>
+            </div> -->
